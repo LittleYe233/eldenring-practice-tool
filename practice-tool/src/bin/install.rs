@@ -27,9 +27,8 @@ fn install() -> Result<()> {
         "johndisandonato的艾尔登法环练习工具",
         "欢迎使用艾尔登法环练习工具安装器!\n\n如果还没启动艾尔登法环请先启动。\n\n \
          如果你安装了多个版本的法环 (通常是为了速通快速切换版本)，\n\n \
-         你必须为每个版本运行一次本安装器。\n\n \
-         安装器会在游戏可执行文件所在目录创建一个 `dinput8.dll`，如果要卸载练习工具， \
-         只需要删除这个文件。\n\n那么我们开始吧！"
+         你必须为每个版本运行一次本安装器。\n\n 安装器会在游戏可执行文件所在目录创建一个 \
+         `dinput8.dll`，如果要卸载练习工具， 只需要删除这个文件。\n\n那么我们开始吧！"
             .trim(),
         MB_OK,
     );
@@ -62,9 +61,7 @@ fn install() -> Result<()> {
         .join("jdsd_er_practice_tool.toml");
 
     if !config_path.exists() {
-        bail!(
-            "找不到 jdsd_er_practice_tool.toml。\n请确保运行安装器前你已经解压了完整的zip内容。"
-        );
+        bail!("找不到 jdsd_er_practice_tool.toml。\n请确保运行安装器前你已经解压了完整的zip内容。");
     }
 
     let game_install_path = get_game_directory(&process)?;
@@ -81,8 +78,9 @@ fn install() -> Result<()> {
     if dll_path_dest.exists() {
         if message_box(
             "关闭艾尔登法环",
-            "看起来当前艾尔登法环已经安装了练习工具。\n\n现在将关闭游戏以继续安装过程。请确保你已经 \
-             退回到主菜单，并且点击了 \"确定\".\n\n如果你现在不想关闭游戏，请点击 \"取消\" 中断安装。",
+            "看起来当前艾尔登法环已经安装了练习工具。\n\n现在将关闭游戏以继续安装过程。\
+             请确保你已经 退回到主菜单，并且点击了 \"确定\".\n\n如果你现在不想关闭游戏，请点击 \
+             \"取消\" 中断安装。",
             MB_OKCANCEL | MB_ICONINFORMATION,
         ) != MESSAGEBOX_RESULT(1)
         {
@@ -96,15 +94,10 @@ fn install() -> Result<()> {
     }
 
     std::fs::copy(&dll_path, &dll_path_dest).map_err(|e| {
-        anyhow!(
-            "无法装DLL: {e}\n当尝试复制\n{dll_path:?}\n到\n{dll_path_dest:?}时"
-        )
+        anyhow!("无法装DLL: {e}\n当尝试复制\n{dll_path:?}\n到\n{dll_path_dest:?}时")
     })?;
     std::fs::copy(&config_path, &config_path_dest).map_err(|e| {
-        anyhow!(
-            "无法安装设置文件: {e}\n当尝试 \
-             复制\n{config_path:?}\n到\n{config_path_dest:?}时"
-        )
+        anyhow!("无法安装设置文件: {e}\n当尝试 复制\n{config_path:?}\n到\n{config_path_dest:?}时")
     })?;
 
     message_box(

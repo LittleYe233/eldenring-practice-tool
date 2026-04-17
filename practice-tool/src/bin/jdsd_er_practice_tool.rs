@@ -58,9 +58,8 @@ fn perform_injection() -> Result<()> {
     debug!("Injecting {:?}...", dll_path);
     process.inject(dll_path).map_err(|e| {
         anyhow!(
-            "无法注入练习工具: {e}.\n\n请确保你禁用了杀毒软件，\
-             绕过了EAC(小蓝熊)，并且运行了未打mod的原版游戏，且\
-             停用了所有游戏内覆盖显示工具（RTSS/FRAPS等）。"
+            "无法注入练习工具: {e}.\n\n请确保你禁用了杀毒软件，绕过了EAC(小蓝熊)，\
+             并且运行了未打mod的原版游戏，且停用了所有游戏内覆盖显示工具（RTSS/FRAPS等）。"
         )
     })?;
 

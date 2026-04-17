@@ -1,10 +1,9 @@
-use std::env;
 use std::fmt::Write;
 use std::path::PathBuf;
 use std::sync::atomic::{AtomicBool, Ordering};
 use std::sync::Mutex;
-use std::thread;
 use std::time::{Duration, Instant};
+use std::{env, thread};
 
 use const_format::formatcp;
 use hudhook::tracing::metadata::LevelFilter;
@@ -115,9 +114,7 @@ impl PracticeTool {
                 Config::default(),
                 Some({
                     error!("{}", e);
-                    format!(
-                        "设置错误，请检查jdsd_er_practice_tool.toml的内容\n\n{e}"
-                    )
+                    format!("设置错误，请检查jdsd_er_practice_tool.toml的内容\n\n{e}")
                 }),
             ),
         };
@@ -269,7 +266,8 @@ impl PracticeTool {
                     w.render(ui);
                 }
 
-                if ui.button_with_size("关闭", [BUTTON_WIDTH * scaling_factor(ui), BUTTON_HEIGHT]) {
+                if ui.button_with_size("关闭", [BUTTON_WIDTH * scaling_factor(ui), BUTTON_HEIGHT])
+                {
                     self.ui_state = if self.is_hidden { UiState::Hidden } else { UiState::Closed };
                     self.pointers.cursor_show.set(false);
                 }
@@ -355,7 +353,8 @@ impl PracticeTool {
                         self.pointers.cursor_show.set(true);
 
                         ui.text(
-                            "你可以在这里切换指示器开关，\n重置帧数计数值。\n\n注意，指示器列表和顺序是由\n你的配置文件决定的。",
+                            "你可以在这里切换指示器开关，\n重置帧数计数值。\n\n注意，\
+                             指示器列表和顺序是由\n你的配置文件决定的。",
                         );
                         ui.separator();
 
@@ -430,8 +429,7 @@ impl PracticeTool {
 
                 ui.same_line();
 
-                if ui.small_button("隐藏")
-                {
+                if ui.small_button("隐藏") {
                     self.is_hidden = true;
                     self.ui_state = UiState::Hidden;
                     self.pointers.cursor_show.set(false);
@@ -473,18 +471,14 @@ impl PracticeTool {
                     .title_bar(false)
                     .build(|| {
                         self.pointers.cursor_show.set(true);
-                        ui.text(formatcp!(
-                            "艾尔登法环练习工具 v{}.{}.{}",
-                            MAJOR,
-                            MINOR,
-                            PATCH
-                        ));
+                        ui.text(formatcp!("艾尔登法环练习工具 v{}.{}.{}", MAJOR, MINOR, PATCH));
                         ui.separator();
                         ui.text(format!(
-                            "请按{}键开关工具界面。\n\n你可以点击UI按键或者按下快捷键(方括号内)切换\
-                             功能/运行指令\n\n你可以用文本编辑器修改jdsd_er_practice_tool.toml配置\
-                             工具的功能。\n如果不小心改坏了配置文件，可以下载原始的配置文件覆盖\n\n\
-                             感谢使用我的工具! <3\n",
+                            "请按{}键开关工具界面。\n\\
+                             n你可以点击UI按键或者按下快捷键(方括号内)切换功能/运行指令\n\\
+                             n你可以用文本编辑器修改jdsd_er_practice_tool.toml配置工具的功能。\\
+                             n如果不小心改坏了配置文件，可以下载原始的配置文件覆盖\n\\
+                             n感谢使用我的工具! <3\n",
                             self.settings.display
                         ));
                         ui.separator();
@@ -847,7 +841,13 @@ impl ImguiRenderLoop for PracticeTool {
             self.ui_state = match (&self.ui_state, hide) {
                 (UiState::Hidden, _) => UiState::MenuOpen,
                 (_, true) => UiState::Hidden,
-                (UiState::MenuOpen, _) => if self.is_hidden { UiState::Hidden } else { UiState::Closed },
+                (UiState::MenuOpen, _) => {
+                    if self.is_hidden {
+                        UiState::Hidden
+                    } else {
+                        UiState::Closed
+                    }
+                },
                 (UiState::Closed, _) => UiState::MenuOpen,
             };
 
@@ -907,24 +907,26 @@ impl ImguiRenderLoop for PracticeTool {
         let mut config_big = config_small.clone();
 
         let mut system_font_dir = "C:\\Windows\\Fonts".to_string();
-        match env::var_os("windir") {
-            Some(x) => {
-                let path = PathBuf::from(x).join("Fonts");
-                if path.is_dir() {
-                    system_font_dir = path.to_str().unwrap().into();
-                }
-            },
-            None => {},
-        };
+        if let Some(x) = env::var_os("windir") {
+            let path = PathBuf::from(x).join("Fonts");
+            if path.is_dir() {
+                system_font_dir = path.to_str().unwrap().into();
+            }
+        }
         let mut font_data = Vec::new();
-        for filename in ["dengb.ttf", "deng.ttf", "msyh.ttc", "msjhbd.ttc", "msjh.ttc", "simsun.ttc", "mingliub.ttc"] {
+        for filename in [
+            "dengb.ttf",
+            "deng.ttf",
+            "msyh.ttc",
+            "msjhbd.ttc",
+            "msjh.ttc",
+            "simsun.ttc",
+            "mingliub.ttc",
+        ] {
             let path = format!("{}\\{}", system_font_dir, filename);
-            match std::fs::read(path) {
-                Ok(data) => {
-                    font_data = data;
-                    break;
-                },
-                Err(_) => {},
+            if let Ok(data) = std::fs::read(path) {
+                font_data = data;
+                break;
             }
         }
         config_big.size_pixels = 24.;

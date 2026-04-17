@@ -336,8 +336,7 @@ impl TryFrom<String> for LevelFilterSerde {
 
     fn try_from(value: String) -> Result<Self, Self::Error> {
         Ok(LevelFilterSerde(
-            LevelFilter::from_str(&value)
-                .map_err(|e| format!("无法解析log级别名: {e}"))?,
+            LevelFilter::from_str(&value).map_err(|e| format!("无法解析log级别名: {e}"))?,
         ))
     }
 }

@@ -50,9 +50,8 @@ impl Update {
                 None => release.body,
             };
             let notes = format!(
-                "发现有新版练习工具！\n\n最新版本:    \
-                 {version}\n已安装版本: {PRACTICE_TOOL_VERSION}\n\n\
-                 更新内容:\n{notes}\n",
+                "发现有新版练习工具！\n\n最新版本:    {version}\n已安装版本: \
+                 {PRACTICE_TOOL_VERSION}\n\n更新内容:\n{notes}\n",
             );
 
             let url = release.html_url;

@@ -88,10 +88,7 @@ pub fn get_game_directory(process: &Process) -> Result<PathBuf> {
 
     let exe_path = PathBuf::from(unsafe { exe_path.to_string()? });
 
-    exe_path
-        .parent()
-        .ok_or_else(|| anyhow!("无法找到可执行文件的父目录"))
-        .map(|p| p.to_path_buf())
+    exe_path.parent().ok_or_else(|| anyhow!("无法找到可执行文件的父目录")).map(|p| p.to_path_buf())
 }
 
 /// Check whether EAC is enabled.
@@ -116,7 +113,8 @@ pub fn check_eac(process: &Process) -> Result<bool> {
 
         message_box(
             "已绕过EAC(小蓝熊)",
-            "已成功绕过EAC(小蓝熊)！\n\n请重启游戏和练习工具。\n\n记住要双击eldenring.exe启动游戏。",
+            "已成功绕过EAC(小蓝熊)！\n\n请重启游戏和练习工具。\n\n记住要双击eldenring.\
+             exe启动游戏。",
             MB_ICONINFORMATION,
         );
 

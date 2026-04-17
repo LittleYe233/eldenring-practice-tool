@@ -32,7 +32,8 @@ impl Stats for CharacterStatsEdit {
                 stats_data.insert(stats_data.len(), Datum::separator());
                 stats_data.insert(stats_data.len(), Datum::int("血量", &mut p.hp, 0, i32::MAX));
                 stats_data.insert(stats_data.len(), Datum::int("专注值", &mut p.fp, 0, i32::MAX));
-                stats_data.insert(stats_data.len(), Datum::int("精力", &mut p.stamina, 0, i32::MAX));
+                stats_data
+                    .insert(stats_data.len(), Datum::int("精力", &mut p.stamina, 0, i32::MAX));
                 stats_data
                     .insert(stats_data.len(), Datum::int("血量上限", &mut p.max_hp, 0, i32::MAX));
                 stats_data
