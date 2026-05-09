@@ -1,0 +1,511 @@
+id_hex	name_en	name_zh	field
+40001f7c	keystone 1	大锅的第一块钥石	CER 道具
+40001f7d	keystone 2	大锅的第二块钥石	CER 道具
+40001f7e	keystone 3	大锅的第三块钥石	CER 道具
+40001f7f	keystone 4	大锅的第四块钥石	CER 道具
+40001f80	keystone 5	大锅的第五块钥石	CER 道具
+4000050F	golden extract	黄金精华	CER 道具
+400004E2	Sacred Ward	圣杯守护	CER 道具
+400051a4	essence physick remnant	精华灵药遗物	CER 道具
+400051a5	elemental physick remnant	元素灵药遗物	CER 道具
+400051a6	prowess physick remnant	英勇灵药遗物	CER 道具
+400051a7	invigorating physick remnant	振奋灵药遗物	CER 道具
+400051a8	enduring physick remnant	持久灵药遗物	CER 道具
+400051d8	faint relic remnant	微光圣遗物	CER 道具
+400051d9	shimmering relic remnant	闪光圣遗物	CER 道具
+400051da	glowing relic remnant	明亮圣遗物	CER 道具
+400051db	shining relic remnant	闪耀圣遗物	CER 道具
+400051d6	combat remnant	战斗遗物	CER 道具
+400051d7	heirloom remnant	传说遗物	CER 道具
+400051dc	enchanted remnant	魔法遗物	CER 道具
+400051dd	Warding Remnant	守护遗物	CER 道具
+40001FCA	Putrid Key	腐烂钥匙	CER 道具
+40001FC7	Seaworn Key	海蚀钥匙	CER 道具
+40001F5E	Mysterious Gate Key	神秘大门钥匙	CER 道具
+40001F54	Grand Library Key	大书库钥匙	CER 道具
+40002775	smithing stone	锻造石	CER 道具
+40002779	large smithing stone	大锻造石	CER 道具
+4000277b	great smithing stone	特大锻造石	CER 道具
+4000279c	dragon smithing stone	古龙锻造石	CER 道具
+4000277E	Shadow Smithing Stone	幽影锻造石	CER 道具
+4000277F	Large Shadow Smithing Stone	大幽影锻造石	CER 道具
+40002782	Primordial Shadow Smithing Stone	原初幽影锻造石	CER 道具
+400027b0	somber stone	失色锻造石	CER 道具
+400027b4	large somber stone	大失色锻造石	CER 道具
+400027b5	great somber stone	特大失色锻造石	CER 道具
+400027b7	colossal somber stone	超特大失色锻造石	CER 道具
+400027b8	dragon somber stone	古龙失色锻造石	CER 道具
+400027BA	Somber Shadow Stone	失色幽影锻造石	CER 道具
+400027BB	Large Somber Shadow Stone	大失色幽影锻造石	CER 道具
+400027BC	Great Somber Shadow Stone	特大失色幽影锻造石	CER 道具
+400027BD	Colossal Somber Shadow Stone	超特大失色幽影锻造石	CER 道具
+400027BE	Primordial Somber Shadow Stone	原初失色幽影锻造石	CER 道具
+40002315	Shadow Stone Bell Bearing [1]	幽影锻造石铃珠【1】	CER 道具
+40002316	Shadow Stone Bell Bearing [2]	幽影锻造石铃珠【2】	CER 道具
+40002317	Shadow Stone Bell Bearing [3]	幽影锻造石铃珠【3】	CER 道具
+40002318	Shadow Somber Stone Bell Bearing [1]	失色幽影锻造石铃珠【1】	CER 道具
+40002319	Shadow Somber Stone Bell Bearing [2]	失色幽影锻造石铃珠【2】	CER 道具
+4000231A	Shadow Somber Stone Bell Bearing [3]	失色幽影锻造石铃珠【3】	CER 道具
+4000206c	faint rune of beasts	微光野兽卢恩	CER 道具
+4000206d	shimmering rune of beasts	闪光野兽卢恩	CER 道具
+4000206e	glowing rune of beasts	明亮野兽卢恩	CER 道具
+4000206f	shining rune of beasts	闪耀野兽卢恩	CER 道具
+40002070	radiant rune of beasts	辉光野兽卢恩	CER 道具
+400020D0	Shadow Rune of Beasts	幽影野兽卢恩	CER 道具
+40002071	faint rune of order	微光律法卢恩	CER 道具
+40002072	shimmering rune of order	闪光律法卢恩	CER 道具
+40002073	glowing rune of order	明亮律法卢恩	CER 道具
+40002074	shining rune of order	闪耀律法卢恩	CER 道具
+40002075	radiant rune of order	辉光律法卢恩	CER 道具
+400020D5	Shadow Rune of Order	幽影律法卢恩	CER 道具
+40002076	faint rune of fell flame	微光恶焰卢恩	CER 道具
+40002077	shimmering rune of fell flame	闪光恶焰卢恩	CER 道具
+40002078	glowing rune of fell flame	明亮恶焰卢恩	CER 道具
+40002079	shining rune of fell flame	闪耀恶焰卢恩	CER 道具
+4000207a	radiant rune of fell flame	辉光恶焰卢恩	CER 道具
+400020DA	Shadow Rune of Fell Flame	幽影恶焰卢恩	CER 道具
+4000207b	faint rune of lightning	微光雷电卢恩	CER 道具
+4000207c	shimmering rune of lightning	闪光雷电卢恩	CER 道具
+4000207d	glowing rune of lightning	明亮雷电卢恩	CER 道具
+4000207e	shining rune of lightning	闪耀雷电卢恩	CER 道具
+4000207f	radiant rune of lightning	辉光雷电卢恩	CER 道具
+400020DF	Shadow Rune of Lightning	幽影雷电卢恩	CER 道具
+40002080	faint rune of black flame	微光黑焰卢恩	CER 道具
+40002081	shimmering rune of black flame	闪光黑焰卢恩	CER 道具
+40002082	glowing rune of black flame	明亮黑焰卢恩	CER 道具
+40002083	shining rune of black flame	闪耀黑焰卢恩	CER 道具
+40002084	radiant rune of black flame	辉光黑焰卢恩	CER 道具
+400020E4	Shadow Rune of Black Flame	幽影黑焰卢恩	CER 道具
+40002085	faint rune of frenzy	微光癫火卢恩	CER 道具
+40002086	shimmering rune of frenzy	闪光癫火卢恩	CER 道具
+40002087	glowing rune of frenzy	明亮癫火卢恩	CER 道具
+40002088	shining rune of frenzy	闪耀癫火卢恩	CER 道具
+40002089	radiant rune of frenzy	辉光癫火卢恩	CER 道具
+400020E9	Shadow Rune of Frenzied Flame	幽影癫火卢恩	CER 道具
+4000208a	faint rune of bloodflame	微光血焰卢恩	CER 道具
+4000208b	shimmering rune of bloodflame	闪光血焰卢恩	CER 道具
+4000208c	glowing rune of bloodflame	明亮血焰卢恩	CER 道具
+4000208d	shining rune of bloodflame	闪耀血焰卢恩	CER 道具
+4000208e	radiant rune of bloodflame	辉光血焰卢恩	CER 道具
+400020EE	Shadow Rune of Bloodflame	幽影血焰卢恩	CER 道具
+4000208f	faint rune of rot	微光腐败卢恩	CER 道具
+40002090	shimmering rune of rot	闪光腐败卢恩	CER 道具
+40002091	glowing rune of rot	明亮腐败卢恩	CER 道具
+40002092	shining rune of rot	闪耀腐败卢恩	CER 道具
+40002093	radiant rune of rot	辉光腐败卢恩	CER 道具
+400020F3	"Shadow Rune of Rot "	幽影腐败卢恩	CER 道具
+40002094	faint rune of Ancestors	微光先祖卢恩	CER 道具
+40002095	shimmering rune of Ancestors	闪光先祖卢恩	CER 道具
+40002096	glowing rune of Ancestors	明亮先祖卢恩	CER 道具
+40002097	shining rune of Ancestors	闪耀先祖卢恩	CER 道具
+40002098	radiant rune of Ancestors	辉光先祖卢恩	CER 道具
+400020F8	Shadow Rune of Ancestors	幽影先祖卢恩	CER 道具
+40002099	faint rune of glintstone	微光辉石卢恩	CER 道具
+4000209a	shimmering rune of glintstone	闪光辉石卢恩	CER 道具
+4000209b	glowing rune of glintstone	明亮辉石卢恩	CER 道具
+4000209c	shinning rune of glintstone	闪耀辉石卢恩	CER 道具
+4000209d	radiant rune of glintstone	辉光辉石卢恩	CER 道具
+400020FD	Shadow rune of Glinstone	幽影辉石卢恩	CER 道具
+4000209e	faint rune of gravity	微光重力卢恩	CER 道具
+4000209f	shimmering rune of gravity	闪光重力卢恩	CER 道具
+400020a0	glowing rune of gravity	明亮重力卢恩	CER 道具
+400020a1	shining rune of gravity	闪耀重力卢恩	CER 道具
+400020a2	radiant rune of gravity	辉光重力卢恩	CER 道具
+40002102	Shadow Rune of Gravity	幽影重力卢恩	CER 道具
+400020a3	faint rune of the dragonkin	微光龙人卢恩	CER 道具
+400020a4	shimmering rune of the dragonkin	闪光龙人卢恩	CER 道具
+400020a5	glowing rune of the dragonkin	明亮龙人卢恩	CER 道具
+400020a6	shining rune of the dragonkin	闪耀龙人卢恩	CER 道具
+400020a7	radiant rune of the dragonkin	辉光龙人卢恩	CER 道具
+40002107	Shadow Rune of the Dragonkin	幽影龙人卢恩	CER 道具
+400020a8	faint rune of magma	微光岩浆卢恩	CER 道具
+400020a9	shimmering rune of magma	闪光岩浆卢恩	CER 道具
+400020aa	glowing rune of magma	明亮岩浆卢恩	CER 道具
+400020ab	shining rune of magma	闪耀岩浆卢恩	CER 道具
+400020ac	radiant rune of magma	辉光岩浆卢恩	CER 道具
+4000210C	Shadow Rune of Magma	幽影岩浆卢恩	CER 道具
+400020ad	faint rune of night	微光黑夜卢恩	CER 道具
+400020ae	shimmering rune of night	闪光黑夜卢恩	CER 道具
+400020af	glowing rune of night	明亮黑夜卢恩	CER 道具
+400020b0	shining rune of night	闪耀黑夜卢恩	CER 道具
+400020b1	radiant rune of night	辉光黑夜卢恩	CER 道具
+40002111	Shadow Rune of Night	幽影黑夜卢恩	CER 道具
+400020b2	faint rune of necromancy	微光死灵卢恩	CER 道具
+400020b3	shimmering rune of necromancy	闪光死灵卢恩	CER 道具
+400020b4	glowing rune of necromancy	明亮死灵卢恩	CER 道具
+400020b5	shining rune of necromancy	闪耀死灵卢恩	CER 道具
+400020b6	radiant rune of necromancy	辉光死灵卢恩	CER 道具
+40002116	Shadow Rune of Necromancy	幽影死灵卢恩	CER 道具
+400020b7	faint rune of the storm	微光风暴卢恩	CER 道具
+400020b8	shimmering rune of the storm	闪光风暴卢恩	CER 道具
+400020b9	glowing rune of the storm	明亮风暴卢恩	CER 道具
+400020ba	shining rune of the storm	闪耀风暴卢恩	CER 道具
+400020bb	radiant rune of the storm	辉光风暴卢恩	CER 道具
+40008475	Shadow Rune of Storm	幽影风暴卢恩	CER 道具
+400020bc	faint rune of frost	微光冰霜卢恩	CER 道具
+400020bd	shimmering rune of frost	闪光冰霜卢恩	CER 道具
+400020be	glowing rune of frost	明亮冰霜卢恩	CER 道具
+400020bf	shining rune of frost	闪耀冰霜卢恩	CER 道具
+400020c0	radiant rune of frost	辉光冰霜卢恩	CER 道具
+40002120	Shadow Rune of Frost	幽影冰霜卢恩	CER 道具
+400020c1	faint rune of thorns	微光荆棘卢恩	CER 道具
+400020c2	shimmering rune of thorns	闪光荆棘卢恩	CER 道具
+400020c3	glowing rune of thorns	明亮荆棘卢恩	CER 道具
+400020c4	shining rune of thorns	闪耀荆棘卢恩	CER 道具
+400020c5	radiant rune of thorns	辉光冰霜卢恩	CER 道具
+40002125	Shadow Rune of Thorns	幽影冰霜卢恩	CER 道具
+400013B0	Death Lightning	死亡雷暴	CER 法术
+40001B44	Will of the Lichdragon	死龙的意志	CER 法术
+40001B45	Ire of the Dragon God	龙神之怒	CER 法术
+401EA2B2	Divine Beast Tornado	神兽龙卷风	CER 法术
+40001A55	Golden Displacement	黄金瞬移	CER 法术
+400012AC	Cosmic Tunnel	星空隧道	CER 法术
+400018D8	Nihil	虚无	CER 法术
+00100590	underworld dagger	地底小刀	CER 武器,短剑
+00111700	surgeons catlinger	医师的短刀	CER 武器,短剑
+0011da50	midnight dagger	子夜短刀	CER 武器,短剑
+001ef9b0	yura’s kanabo	尤拉的金棒	CER 武器,直剑
+006C2F50	zephyr blades	微风之刃	CER 武器,曲剑
+0020ce70	molten sword	熔火之剑	CER 武器,直剑
+00225510	dragonkin seeker sword	龙人求道者之剑	CER 武器,直剑
+002f7470	celestial blade	天启之剑	CER 武器,大剑
+002f9b80	sword of the cyclops	独眼巨人之剑	CER 武器,大剑
+00314930	sword of hadea	哈迪亚之剑	CER 武器,大剑
+003eddc0	gravelstone arcblades	碎石弧形刃	CER 武器,特大剑
+003f04d0	osian’s greatsword	奥西安的大剑	CER 武器,特大剑
+004d5cb0	thorn of the guilty	罪恶荆棘	CER 武器,刺剑
+004d83c0	foil of caddock	卡多克的花剑	CER 武器,刺剑
+004daad0	quicksilver rapier	水银细剑	CER 武器,刺剑
+00AA49C0	Zamor Star Mace	萨米尔星槌	CER 武器,槌
+005c02b0	carwyn’s épée	卡尔温的重剑	CER 武器,重刺剑
+006d40c0	blade of scarlet boom	猩红绽放之刃	CER 武器,曲剑
+006d67d0	godskin flayer	神皮剥制刀	CER 武器,曲剑
+006d8ee0	nomad's kilij	流浪民族的弯刀	CER 武器,曲剑
+007b7190	three finger blade	叄指刃	CER 武器,大曲剑
+0098e4a0	sulien's razors	苏莲的剃刀	CER 武器,双头剑
+009932c0	frozen twinshards	冰霜双刃	CER 武器,双头剑
+0099a7f0	godwyn's cragblades	葛德文的岩石剑	CER 武器,双头剑
+009a1d20	palm-ax twinblades	斧刃双头剑	CER 武器,双头剑
+009a4430	gilded quarterstaff	镀金长棍	CER 武器,双头剑
+00a826e0	leaden maul	铅槌	CER 武器,槌
+00b79030	underworld greatmace	地底大槌	CER 武器,大槌
+00b7b740	crimson brair-bough	深红棘枝	CER 武器,大槌
+00b82c70	sigur’s greatmace	西古尔的巨型锤矛	CER 武器,大槌
+00c72090	mohgwyn censer	蒙格温香炉	CER 武器,连枷
+00c747a0	seething flail	沸腾连枷	CER 武器,连枷
+00d6b0f0	glintstone cleaver	辉石切割刀	CER 武器,斧
+00d6ff10	axe of epiphany	顿悟之斧	CER 武器,斧
+00d79b50	axe of fell prophecy	恶焰预言斧	CER 武器,斧
+00d7e970	bloodhound hookblade	猎犬钩刃	CER 武器,斧
+00e64150	axe of rust	锈斧	CER 武器,大斧
+00f5aaa0	spear of tranquility	安宁之矛	CER 武器,矛
+01145630	guardian spearblade	守卫枪剑	CER 武器,直剑
+01147d40	glaive of the ancients	古龙剑刃戟	CER 武器,戟
+01154090	reaver’s odachi	掠夺者大太刀	CER 武器,大刀
+01228700	war scythe	战镰	CER 武器,镰刀
+00D81080	Rimeheart	霜心	CER 武器,斧
+00317040	Dyru's Greatsword	迪鲁大剑	CER 武器,大剑
+00D83790	Bloodflame Kamas	血焰之镰	CER 武器,斧
+00120160	Deathrite Dagger	死亡仪式匕首	CER 武器,短剑
+008A1790	Star Shadow	星辰之影	CER 武器,刀
+00F6BC10	Phalanx Pike	方阵长枪	CER 武器,矛
+015074D0	Emyr's Great Talons	埃米尔的巨爪	CER 武器,钩爪
+01605350	Greatstaff of Decay	腐朽之杖	CER 武器,特大武器
+0140BD60	Daergraf’s Opus	达尔戈拉夫的杰作	CER 武器,拳头
+00205940	Blade of Valor	英勇之刃	CER 武器,直剑
+00AA97E0	Hammer of Virtue	高尚之锤	CER 武器,槌
+0122AE10	Rosus harvester	罗泽司的收割刀	CER 武器,镰刀
+04066D10	Sword of the Cosmos	星空之剑	CER 武器,轻大剑
+009980E0	Caimar's Battlestaff	凯玛战杖	CER 武器,双头剑
+00B87A90	Einar's Hammer	艾纳尔之锤	CER 武器,大槌
+01049EC0	Spear of the Dreaming	梦之矛	CER 武器,大矛
+00AABEF0	Tricia's Pomander	托莉夏香炉	CER 武器,槌
+039B7640	Rancor Touch	怨魂之触	CER 武器,格斗术
+0122FC30	Scarlet Triscythe	猩红三刃镰	CER 武器,镰刀
+03F72AD0	Eagle's Edge	鹰之刃	CER 武器,大刀
+0141CED0	Furnace Fists	燃炉拳套	CER 武器,拳头
+01DBC4E0	Shield of Starlight	星光盾	CER 武器,中盾
+01CC3480	Hermit's Buckler	遁世者圆盾	CER 武器,小盾
+01CC5B90	Shield of Alacrity	迅捷盾	CER 武器,小盾
+008AB3D0	Blade of Distant Light	彼岸灯火剑	CER 武器,刀
+01CE5760	Crest of the Dragon Cult	龙信仰纹章盾	CER 武器,中盾
+01504dc0	stone claws	石爪	CER 武器,钩爪
+016164c0	lodestone of gelmir	格密尔脉岩	CER 武器,特大武器
+00124F80	Blades of the Prince	王子之刃	CER 武器,短剑
+039B9D50	Bracelet of Shadow	暗影手环	CER 武器,格斗术
+039BC460	Bracelet of Gold	黄金手环	CER 武器,格斗术
+01DE5CF0	Aegis of Hadea	哈迪亚之盾	CER 武器,中盾
+800030D4	Ash of War: Evasive Strike	战灰：闪避打击	战灰
+80013A10	Ash of War: Flame Arc	战灰：火焰弧	战灰
+800139AC	Ash of War: Assassin's Feint	战灰：刺客佯攻	战灰
+400021AC	Map: Limgrave	地图：宁姆格福	CER 道具
+400021AD	Map: Caelid	地图：盖利德	CER 道具
+400021AE	Map: Liurnia	地图：利耶尼亚	CER 道具
+400021AF	Map: Altus Plateau	地图：亚坦高原	CER 道具
+400021B0	Map: Mountaintops of the Giants	地图：巨人山顶	CER 道具
+400021B1	Map: Consecrated Snowfield	地图：化圣雪原	CER 道具
+400021B2	Map: Farum Azula	地图：法姆·亚兹拉	CER 道具
+400021B3	Map: Underground	地图：地底世界	CER 道具
+400021B4	Map: Realm of Shadow	地图：幽影之地	CER 道具
+01f84d90	gelmir lava staff	格密尔熔岩杖	CER 武器,手杖
+01f874a0	blighted branch	咒死之枝	CER 武器,手杖
+01fa9780	dragon student staff	龙学徒杖	CER 武器,手杖
+01fbf710	dragonkin scepter	龙人权杖	CER 武器,手杖
+01fc1e20	ranni's staff	菈妮的手杖	CER 武器,手杖
+01fc4530	snow witch staff	雪魔女杖	CER 武器,手杖
+01fc6c40	staff of briar	荆棘杖	CER 武器,手杖
+01fc9350	lavastone staff	熔岩石杖	CER 武器,手杖
+01fcba60	tempestcaller's staff	暴风召唤者的手杖	CER 武器,手杖
+01fce170	stormcaller staff	烈风召唤者的手杖	CER 武器,手杖
+02085320	godskin seal	神皮圣印记	CER 武器,圣印记
+02087a30	fire monk seal	火焰习武修士圣印记	CER 武器,圣印记
+0208a140	dragon cult seal	龙信仰圣印记	CER 武器,圣印记
+0208c850	earthbreaker seal	撼地者圣印记	CER 武器,圣印记
+0208ef60	fingerprint seal	指痕圣印记	CER 武器,圣印记
+02091670	mohgwyn seal	蒙格温圣印记	CER 武器,圣印记
+02093d80	war surgeon seal	战场医师圣印记	CER 武器,圣印记
+02096490	seal of rot	腐败圣印记	CER 武器,圣印记
+02098ba0	pest seal	虫之圣印记	CER 武器,圣印记
+0209b2b0	spiritshaper seal	塑灵者圣印记	CER 武器,圣印记
+0209d9c0	mystic seal	密契圣印记	CER 武器,圣印记
+4024ED20	Spirit Ash Nox Ancestor Lasko	“诺克斯先祖”拉斯克	CER 骨灰
+40253B40	Spirit Ash Sanguine Noble Strage	“鲜血贵族”斯特拉格	CER 骨灰
+40264CB0	Spirit Ash Warrior Jar Alexander	“战士壶”亚历山大	CER 骨灰
+40278530	Spirit Ash Erdtree Sentry Shamar	“黄金树看护者”萨马尔	CER 骨灰
+4024C610	Spirit Ash Horned Omen Khata	“有角恶兆”卡塔	CER 骨灰
+40275E20	Spirit Ash Zamor Knight Siddi	“萨米尔骑士”西迪	CER 骨灰
+40251430	Spirit Ash Rotten Duelist Verus	“腐败斗士”维鲁斯	CER 骨灰
+4025B070	Spirit Ash Spirit Caller Snail	唤灵蜗牛的骨灰	CER 骨灰
+40249F00	Spirit Ash Cemetery Shade	墓地影子的骨灰	CER 骨灰
+4027AC40	Spirit Ash Man-Serpent Caster Timuris	“蛇人魔法师”提穆里斯	CER 骨灰
+40269AD0	Spirit Ash Putrescence Sorcerer	墓地魔法师的骨灰	CER 骨灰
+402673C0	"Spirit Ash Wormface "	蚯蚓脸的骨灰	CER 骨灰
+4025D780	Spirit Ash Winged Dame	翼蝠贵妇的骨灰	CER 骨灰
+4026E8F0	Spirit Ash Stone Sentry	岩石守卫的骨灰	CER 骨灰
+40256250	Spirit Ash Erdtree Guardians	黄金树守卫的骨灰	CER 骨灰
+4025FE90	"Spirit Ash Starcallers "	唤星者的骨灰	CER 骨灰
+402625A0	Spirit Ash Bloodthorn Exile	血棘罪人的骨灰	CER 骨灰
+4026C1E0	Spirit Ash Stone Cluster	岩石团的骨灰	CER 骨灰
+40271000	Spirit Ash Red Bear	红熊的骨灰	CER 骨灰
+40273710	Spirit Ash Mystic Pigmen	密契猪人的骨灰	CER 骨灰
+40258960	"Spirit Ash Rootmen "	根之民的骨灰	CER 骨灰
+400009C4	Mount:Funeral Steed	坐骑：送葬马	CER 道具
+400009C5	Mount:Frenzied Mule	坐骑：癫火骡	CER 道具
+400009C6	Mount:Carian Knight Steed	坐骑：卡利亚骑士马	CER 道具
+400009C7	Mount:Erdtree Steed	坐骑：黄金树战马	CER 道具
+10035c28	page gloves	随从手套	CER 防具
+1003d158	nomadic merchant gloves	流浪商人的手套	CER 防具
+10047950	night maiden bracelets	黑夜女巫手环	CER 防具
+100479b4	night maiden greaves	黑夜女巫腿甲	CER 防具
+10049890	shaman bracers	祭司手环	CER 防具
+10049bb0	mystic circlet	密契头环	CER 防具
+10049c78	mystic bracelets	密契手环	CER 防具
+1004e2c8	sanguine noble bracelets	鲜血贵族手环	CER 防具
+10066c88	vulgar militia hood	恶兵风帽	CER 防具
+100976a8	prophet manacles	预言家镣铐	CER 防具
+100a6428	war surgeon hood	战场医师风帽	CER 防具
+100b5658	viridian hood	翠绿风帽	CER 防具
+100c35c8	festive gloves	庆典手套	CER 防具
+100c362c	festive trousers	庆典长裤	CER 防具
+100cc650	raya lucarian gloves	雷亚卢卡利亚手套	CER 防具
+100cc6b4	raya lucarian trousers	雷亚卢卡利亚长裤	CER 防具
+100d9558	prisoner chains	囚犯链铐	CER 防具
+100ea6c8	consort's gloves	侧室手套	CER 防具
+100eb6cc	bloodsoaked wraps	渗血护膝	CER 防具
+100f6a18	snow witch gloves	血魔女手套	CER 防具
+10116520	vanguard helm	先锋头盔	CER 防具
+10116584	vanguard armor	先锋铠甲	CER 防具
+101165e8	vanguard gauntlets	先锋臂甲	CER 防具
+1011664c	vanguard greaves	先锋腿甲	CER 防具
+10118c30	marksman hat	神射手帽子	CER 防具
+10118c94	marksman tabard	神射手制服	CER 防具
+10118cf8	marksman gauntlets	神射手臂甲	CER 防具
+10118d5c	marksman boots	神射手靴子	CER 防具
+1011b340	berserker leather helm	狂战士皮盔	CER 防具
+1011b3a4	berserker battlewear	狂战士战衣	CER 防具
+1011b408	berserker bracers	狂战士护腕	CER 防具
+1011b46c	berserker legwraps	狂战士裹腿	CER 防具
+1011da50	dreadnought helm	无畏者头盔	CER 防具
+1011dab4	dreadnought armor	无畏者铠甲	CER 防具
+1011db18	dreadnought gauntlets	无畏者臂甲	CER 防具
+1011db7c	dreadnought greaves	无畏者腿甲	CER 防具
+10120160	sellsword helm	佣兵头盔	CER 防具
+101201c4	sellsword armor	佣兵铠甲	CER 防具
+10120228	sellsword gloves	佣兵手套	CER 防具
+1012028c	sellsword boots	佣兵靴子	CER 防具
+10122870	starcaller hood	唤星者风帽	CER 防具
+101228d4	starcaller garb	唤星者外衣	CER 防具
+10122938	starcaller wraps	唤星者腕带	CER 防具
+1012299c	starcaller boots	唤星者靴子	CER 防具
+10124f80	underworld hood	地底风帽	CER 防具
+10124fe4	underworld robe	地底长袍	CER 防具
+10125048	underworld bracers	地底护腕	CER 防具
+101250ac	underworld boots	地底靴子	CER 防具
+10127690	volcanist hat	火山术士帽子	CER 防具
+101276f4	volcanist robe	火山术士长袍	CER 防具
+10127758	volcanist gloves	火山术士手套	CER 防具
+101277bc	volcanist boots	火山术士靴子	CER 防具
+10129da0	stormcaller helm	烈风召唤者头盔	CER 防具
+10129e04	stormcaller armor	烈风召唤者盔甲	CER 防具
+10129e68	stormcaller gauntlets	烈风召唤者臂甲	CER 防具
+10129ecc	stormcaller greaves	烈风召唤者腿甲	CER 防具
+1012c4b0	nox oracle headband	诺克斯神谕者头带	CER 防具
+1012c514	nox oracle armor	诺克斯神谕者盔甲	CER 防具
+1012c578	nox oracle gloves	诺克斯神谕者手套	CER 防具
+1012c5dc	nox oracle skirt	诺克斯神谕者长裙	CER 防具
+1012ebc0	necromancer hood	死灵术士风帽	CER 防具
+1012ec24	necromancer robe	死灵术士长袍	CER 防具
+1012ec88	necromancer gloves	死灵术士手套	CER 防具
+1012ecec	necromancer trousers	死灵术士长裤	CER 防具
+101312d0	frost witch hat	冰霜术士帽	CER 防具
+10131334	frost witch robe	冰霜术士长袍	CER 防具
+10131398	frost witch wraps	冰霜术士腕带	CER 防具
+101313fc	frost witch skirt	冰霜术士长裙	CER 防具
+101339e0	heretic's collar	异教徒项圈	CER 防具
+10133a44	heretic's rags	异教徒布衣	CER 防具
+10133aa8	heretic's wraps	异教徒腕带	CER 防具
+10133b0c	heretic's boots	异教徒靴子	CER 防具
+1013fd30	fundamentalist crown	基本主义者头冠	CER 防具
+1013fd94	fundamentalist breastplate	基本主义者胸甲	CER 防具
+1013fdf8	fundamentalist bracers	基本主义者腕甲	CER 防具
+1013fe5c	fundamentalist greaves	基本主义者腿甲	CER 防具
+10142440	dragon cult helm	龙装头盔	CER 防具
+101424a4	dragon cult armor	龙装铠甲	CER 防具
+10142508	dragon cult gauntlets	龙装腕甲	CER 防具
+1014256c	dragon cult greaves	龙装腿甲	CER 防具
+10144b50	zealot hood	狂徒风帽	CER 防具
+10144bb4	zealot robe	狂徒长袍	CER 防具
+10144c18	zealot wraps	狂徒腕带	CER 防具
+10144c7c	zealot boots	狂徒靴子	CER 防具
+10147260	hood of rot	腐败风帽	CER 防具
+101472c4	coat of rot	腐败披风	CER 防具
+10147328	gloves of rot	腐败手套	CER 防具
+1014738c	boots of rot	腐败靴子	CER 防具
+10149970	frenzied maiden blindfold	癫火女巫眼罩	CER 防具
+101499d4	frenzied maiden robe	癫火女巫长袍	CER 防具
+10149a38	frenzied maiden gloves	癫火女巫手套	CER 防具
+10149a9c	frenzied maiden boots	癫火女巫靴子	CER 防具
+1014c080	dreamer's horned headband	梦者角头带	CER 防具
+1014c0e4	dreamer's rags	梦者布衣	CER 防具
+1014c148	dreamer's wraps	梦者腕带	CER 防具
+1014c1ac	dreamer's skirt	梦者长裙	CER 防具
+10094ED0	Ragged Hat	拼接帽子	CER 防具
+10094F34	Ragged Armor	拼接铠甲	CER 防具
+10094F98	Ragged Gloves	拼接手套	CER 防具
+10094FFC	Ragged Loincloth	拼接腰巾	CER 防具
+1014e790	beast clergy hood	野兽祭司兜帽	CER 防具
+1014e7f4	beast clergy robe	野兽祭司长袍	CER 防具
+1014e858	beast clergy bracers	野兽祭司护腕	CER 防具
+1014e8bc	beast clergy boots	野兽祭司靴子	CER 防具
+101b9e50	mausoleum knight helm	灵庙骑士头盔	CER 防具
+101d9ae8	fia's bracelets	菲雅手环	CER 防具
+101d9b4c	fia's trousers	菲雅长裤	CER 防具
+10517B60	Midra's Gaze	米德拉的凝视	CER 防具
+101dc130	millicent's headband	米莉森的头带	CER 防具
+101e5e38	high page gloves	上流随从手套	CER 防具
+101e5e9c	high page trousers	上流随从长裤	CER 防具
+10061E68	Spiritshaper's Antlers	塑灵者鹿角	CER 防具
+10061ECC	Spiritshaper's Cloak	塑灵者披风	CER 防具
+10061F30	Spiritshaper's wraps	塑灵者护腕	CER 防具
+10061F94	Spiritshaper's Trousers	塑灵者长裤	CER 防具
+102E14E0	Carian Golem Helm	卡利亚魔像头盔	CER 防具
+102E1544	Carian Golem Armor	卡利亚魔像铠甲	CER 防具
+102E15A8	Carian Golem Gauntlets	卡利亚魔像臂甲	CER 防具
+102E160C	Carian Golem Greaves	卡利亚魔像腿甲	CER 防具
+40002260	path of the retainer	说明：扈从之路	CER 道具
+40002261	path of the vanguard	说明：先锋之路	CER 道具
+40002262	path of the marksman	说明：神射手之路	CER 道具
+40002263	path of the berserker	说明：狂战士之路	CER 道具
+40002264	path of the dreadnought	说明：无畏者之路	CER 道具
+40002265	path of the sellsword	说明：佣兵之路	CER 道具
+40002266	path of the rogue	说明：游荡者之路	CER 道具
+40002267	path of the glint sorcerer	说明：辉石魔法师之路	CER 道具
+40002268	path of the starcaller	说明：唤星者之路	CER 道具
+40002269	path of the underworld mage	说明：地底魔法师之路	CER 道具
+4000226a	path of the volcanist	说明：火山术士之路	CER 道具
+4000226b	path of the storm caller	说明：烈风召唤者之路	CER 道具
+4000226c	path of the nox oracle	说明：诺克斯神谕官之路	CER 道具
+4000226d	path of the necromancer	说明：死灵术士之路	CER 道具
+4000226e	path of the frost witch	说明：冰霜巫师之路	CER 道具
+4000226f	path of the aberrant heretic	说明：悖逆异端之路	CER 道具
+40002270	path of the flame prophet	说明：火焰预言家之路	CER 道具
+40002271	path of the fundamentalist	说明：基本主义者之路	CER 道具
+40002272	path of the bestial devout	说明：野兽虔敬者之路	CER 道具
+40002273	path of the dragon cultist	说明：龙信徒之路	CER 道具
+40002274	path of the godskin celebrant	说明：神皮庆典司仪之路	CER 道具
+40002275	path of the frenzied zealot	说明：癫火狂徒之路	CER 道具
+40002276	path of the blood initiate	说明：鲜血入道者之路	CER 道具
+40002277	path of the servant of rot	说明：腐败侍从之路	CER 道具
+40002278	path of the mystic	说明：密契者之路	CER 道具
+40002279	path of the perfumer	说明：调香师之路	CER 道具
+4000227a	path of the prisoner	说明：囚犯之路	CER 道具
+400022a6	weapons for the retainer	说明：扈从的武器	CER 道具
+400022a7	weapons for the vanguard	说明：先锋的武器	CER 道具
+400022a8	weapons for the marksman	说明：神射手的武器	CER 道具
+400022a9	weapons for the berserker	说明：狂战士之武器	CER 道具
+400022aa	weapons for the dreadnought	说明：无畏者之武器	CER 道具
+400022ab	weapons for the sellsword	说明：佣兵之武器	CER 道具
+400022ac	weapons for the rogue	说明：游荡者的武器	CER 道具
+400022ad	weapons for the glint sorcerer	说明：辉石魔法师的武器	CER 道具
+400022ae	weapons for the starcaller	说明：唤星者的武器	CER 道具
+400022af	weapons for the underworld mage	说明：地底魔法师的武器	CER 道具
+400022b0	weapons for the volcanist	说明：火山术士的武器	CER 道具
+400022b1	weapons for the storm caller	说明：烈风召唤者的武器	CER 道具
+400022b2	weapons for the nox oracle	说明：诺克斯神谕官的武器	CER 道具
+400022b3	weapons for the necromancer	说明：死灵术士的武器	CER 道具
+400022b4	weapons for the frost witch	说明：冰霜巫师的武器	CER 道具
+400022b5	weapons for the aberrant heretic	说明：悖逆异端的武器	CER 道具
+400022b6	weapons for the flame prophet	说明：火焰预言家的武器	CER 道具
+400022b7	weapons for the fundamentalist	说明：基本主义者的武器	CER 道具
+400022b8	weapons for bestial devout	说明：野兽虔敬者的武器	CER 道具
+400022b9	weapons for the dragon cultist	说明：龙信徒的武器	CER 道具
+400022ba	weapons for the godskin celebrant	说明：神皮庆典司仪的武器	CER 道具
+400022bb	weapons for the frenzied zealot	说明：癫火狂徒的武器	CER 道具
+400022bc	weapons for the blood initiate	说明：鲜血入道者的武器	CER 道具
+400022bd	weapons for the servant of rot	说明：腐败侍从的武器	CER 道具
+400022be	weapons for the mystic	说明：密契者的武器	CER 道具
+40000B95	Remembrance of the Crucible's Betrayer	背叛熔炉者的追忆	CER 道具
+40000B96	Remembrance of the Godskin Matriarch	女族长的追忆	CER 道具
+40000B97	Remembrance of the Scion of the Sealed God	封印之神后裔的追忆	CER 道具
+40000B98	Remembrance of Dyru, Scavenger King	剥尸王的追忆	CER 道具
+40000B99	Remembrance of Einar, Ice Guardian	冰之守卫的追忆	CER 道具
+40000B9A	Remembrance of Spiritshaper Caimar	塑灵者的追忆	CER 道具
+20000BC2	Runebear's Claw	卢恩熊的爪	CER 护符
+20000BCC	Primordial Pumice Fragment	原初陨石碎片	CER 护符
+20000BD6	Primordial Glass Shard	原初星星碎片	CER 护符
+2000088E	Giant's Insignia	巨人徽章	CER 护符
+20000BBA	Glowing Glintshard	闪耀魔砾	CER 护符
+20000BB8	Graven-School Talisman	魔法师球护符	CER 护符
+20000BB9	Graven-Mass Talisman	魔法师块护符	CER 护符
+2004E200	Magic Scorpion Charm	魔力对蝎	CER 护符
+200007E5	Firemonk's Filigree	习武修士饰物	CER 护符
+200007E6	Everburning Ember	永燃余火	CER 护符
+200007E7	Coal of the Forge	大锅余烬	CER 护符
+200007E4	Fire Scorpion Charm	火对蝎	CER 护符
+200007DB	Dragonkin Crest	龙人纹章	CER 护符
+200007DC	Chime of Godwyn	葛德文的钟	CER 护符
+200007DD	Scale of Gransax	古兰桑克斯的鳞片	CER 护符
+200007DA	Lightning Scorpion Charm	雷对蝎	CER 护符
+200007EF	Emblem of Gold	黄金徽章	CER 护符
+20000BE0	Faithful's Canvas Talisman	信徒的立誓布	CER 护符
+20000BEA	Flock's Canvas Talisman	群聚信徒的立誓布	CER 护符
+200007EE	Sacred Scorpion Charm	圣对蝎	CER 护符
+200013BA	Assassin's Curio	刺客饰物	CER 护符
+2000102C	Quiver Talisman	箭袋护符	CER 护符
+20053534	Sigil of Freedom	自由印记	CER 护符
+20001770	Thief's Bauble	盗贼的饰品	CER 护符
+20000447	Mimic Heirloom	外在神祇的传说	CER 护符
+20000425	Valorous Heirloom	英勇的传说	CER 护符
+20000426	Strategist Heirloom	军师的传说	CER 护符
+20000427	Chosen Heirloom	神选的传说	CER 护符
+20000428	Blackguard Heirloom	流氓的传说	CER 护符
+2000042F	Saboteur Heriloom	破坏者的传说	CER 护符
+20000430	Cloister Heirloom	修道者的传说	CER 护符
+20000431	Perfume Heirloom	调香的传说	CER 护符
+20000439	Midnight Heirloom	午夜的传说	CER 护符
+2000043A	Forbidden Heirloom	禁忌的传说	CER 护符
+20000443	Scorpion Heirloom	对蝎的传说	CER 护符
+20001392	Cerulean Seed Talisman	恩惠蓝露滴护符	CER 护符
+200004EC	Warming Horn Charm	温暖角饰品	CER 护符
+2000049C	Rousing Horn Charm	活力角饰品	CER 护符
+20001018	Blasphemer's Crest	亵渎者徽章	CER 护符

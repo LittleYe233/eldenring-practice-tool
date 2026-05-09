@@ -8,6 +8,7 @@ use imgui::sys::{
     igSetNextWindowPos, igUnindent, ImVec2,
 };
 use imgui::{Condition, InputText, TreeNodeFlags, Ui, WindowFlags};
+use csv::ReaderBuilder;
 use libeldenring::prelude::*;
 use once_cell::sync::Lazy;
 use practice_tool_core::crossbeam_channel::Sender;
@@ -18,7 +19,7 @@ use serde::Deserialize;
 use super::pinyin_match::{pinyin_match, Segment};
 use super::string_match;
 
-static AFFINITIES: [(u32, &str); 13] = [
+static AFFINITIES: [(u32, &str); 31] = [
     (0, "无质变"),
     (100, "厚重"),
     (200, "锋利"),
@@ -32,6 +33,24 @@ static AFFINITIES: [(u32, &str); 13] = [
     (1000, "毒"),
     (1100, "血"),
     (1200, "神秘"),
+    (400, "<CER> 辉石"),
+    (500, "<CER> 龙人"),
+    (600, "<CER> 重力"),
+    (700, "<CER> 火焰"),
+    (800, "<CER> 黄金"),
+    (900, "<CER> 龙装"),
+    (1000, "<CER> 野兽"),
+    (1100, "<CER> 黑夜"),
+    (1200, "<CER> 熔岩"),
+    (1300, "<CER> 癫狂"),
+    (1400, "<CER> 死亡"),
+    (1500, "<CER> 狩猎神祇"),
+    (1600, "<CER> 冰霜"),
+    (1700, "<CER> 异端"),
+    (1800, "<CER> 血焰"),
+    (1900, "<CER> 腐败"),
+    (2000, "<CER> 风暴"),
+    (2100, "<CER> 密契"),
 ];
 
 static UPGRADES: [(u32, &str); 26] = [
@@ -159,8 +178,57 @@ impl ItemIDNode {
 }
 
 const ISP_TAG: &str = "##item-spawn";
-static ITEM_ID_TREE: Lazy<Vec<ItemIDNode>> =
-    Lazy::new(|| serde_json::from_str(include_str!("item_ids.json")).unwrap());
+static ITEM_ID_TREE: Lazy<Vec<ItemIDNode>> = Lazy::new(|| {
+    fn insert_leaf(tree: &mut Vec<ItemIDNode>, path: &[&str], name: &str, value: u32) {
+        if path.is_empty() {
+            tree.push(ItemIDNode::Leaf {
+                node: name.to_string(),
+                value,
+            });
+            return;
+        }
+        let segment = path[0].trim();
+        if segment.is_empty() {
+            insert_leaf(tree, &path[1..], name, value);
+            return;
+        }
+        let index = tree.iter().position(|n| matches!(n, ItemIDNode::Node { node, .. } if node == segment))
+            .unwrap_or_else(|| {
+                tree.push(ItemIDNode::Node {
+                    node: segment.to_string(),
+                    children: Vec::new(),
+                });
+                tree.len() - 1
+            });
+        if let ItemIDNode::Node { children, .. } = &mut tree[index] {
+            insert_leaf(children, &path[1..], name, value);
+        }
+    }
+    // First parse from JSON (vanilla game)
+    let mut tree: Vec<ItemIDNode> = serde_json::from_str(include_str!("item_ids.json")).unwrap();
+    // Parses CSV content (CER)
+    let csv_data = include_str!("itemdropdowncer.csv");
+    let mut reader = ReaderBuilder::new()
+        .delimiter(b'\t')
+        .has_headers(true)
+        .from_reader(csv_data.as_bytes());
+    // Add to tree
+    for record in reader.records().flatten() {
+        let id_hex = record.get(0).unwrap_or("").trim();
+        let name_zh = record.get(2).unwrap_or("").trim();
+        let field = record.get(3).unwrap_or("").trim();
+        if id_hex.is_empty() || name_zh.is_empty() || field.is_empty() {
+            continue;
+        }
+        let value = match u32::from_str_radix(id_hex.trim_start_matches("0x"), 16) {
+            Ok(v) => v,
+            Err(_) => continue,
+        };
+        let path: Vec<&str> = field.split(',').collect();
+        insert_leaf(&mut tree, &path, name_zh, value);
+    }
+    tree
+});
 static ITEM_PINYIN_INDEX: Lazy<HashMap<String, Segment>> = Lazy::new(|| {
     fn visit(node: &ItemIDNode, map: &mut HashMap<String, Segment>) {
         match node {

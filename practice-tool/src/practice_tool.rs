@@ -474,11 +474,11 @@ impl PracticeTool {
                         ui.text(formatcp!("艾尔登法环练习工具 v{}.{}.{}", MAJOR, MINOR, PATCH));
                         ui.separator();
                         ui.text(format!(
-                            "请按{}键开关工具界面。\n\\
-                             n你可以点击UI按键或者按下快捷键(方括号内)切换功能/运行指令\n\\
-                             n你可以用文本编辑器修改jdsd_er_practice_tool.toml配置工具的功能。\\
-                             n如果不小心改坏了配置文件，可以下载原始的配置文件覆盖\n\\
-                             n感谢使用我的工具! <3\n",
+                            "请按{}键开关工具界面。\n\n
+你可以点击UI按键或者按下快捷键(方括号内)切换功能/运行指令\n\n
+你可以用文本编辑器修改jdsd_er_practice_tool.toml配置工具的功能。\n
+如果不小心改坏了配置文件，可以下载原始的配置文件覆盖\n\n
+感谢使用我的工具! <3\n",
                             self.settings.display
                         ));
                         ui.separator();
