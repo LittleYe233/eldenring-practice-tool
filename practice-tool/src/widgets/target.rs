@@ -14,6 +14,7 @@ use windows::Win32::System::Memory::{
 
 #[derive(Debug, Default)]
 struct EnemyInfo {
+    param_id: u32,
     hp: u32,
     max_hp: u32,
     mp: u32,
@@ -66,6 +67,7 @@ struct EntityPosition {
 }
 
 struct EntityPointerChains {
+    param_id: PointerChain<u32>,
     hp: PointerChain<[u32; 3]>,
     sp: PointerChain<[u32; 3]>,
     mp: PointerChain<[u32; 3]>,
@@ -138,6 +140,7 @@ impl Target {
         }
 
         let epc = EntityPointerChains {
+            param_id: pointer_chain!(self.entity_addr as usize + 0x60),
             hp: pointer_chain!(self.entity_addr as usize + 0x190, 0, 0x138),
             sp: pointer_chain!(self.entity_addr as usize + 0x190, 0, 0x154),
             mp: pointer_chain!(self.entity_addr as usize + 0x190, 0, 0x148),
@@ -146,6 +149,7 @@ impl Target {
             position: pointer_chain!(self.entity_addr as usize + 0x190, 0x68, 0x54),
         };
 
+        let param_id = epc.param_id.read()?;
         let [hp, _, max_hp] = epc.hp.read()?;
         let [sp, _, max_sp] = epc.sp.read()?;
         let [mp, _, max_mp] = epc.mp.read()?;
@@ -153,7 +157,7 @@ impl Target {
         let poise = epc.poise.read()?;
         let position = epc.position.read()?;
 
-        Some(EnemyInfo { hp, max_hp, mp, max_mp, sp, max_sp, res, poise, position })
+        Some(EnemyInfo { param_id, hp, max_hp, mp, max_mp, sp, max_sp, res, poise, position })
     }
 
     fn enable(&mut self) {
@@ -233,7 +237,7 @@ impl Widget for Target {
             return;
         }
 
-        let Some(EnemyInfo { hp, max_hp, mp, max_mp, sp, max_sp, res, poise, position }) =
+        let Some(EnemyInfo { param_id, hp, max_hp, mp, max_mp, sp, max_sp, res, poise, position }) =
             self.get_data()
         else {
             if self.is_enabled {
@@ -305,6 +309,8 @@ impl Widget for Target {
             let _tok = ui.push_style_color(StyleColor::PlotHistogram, c);
             ProgressBar::new(pct).size(pbar_size).overlay_text("").build(ui);
         };
+
+        ui.text(format!("Param ID  {param_id}"));
 
         pbar("HP", hp, max_hp, COLOR_HP);
         pbar("SP", sp, max_sp, COLOR_SP);
