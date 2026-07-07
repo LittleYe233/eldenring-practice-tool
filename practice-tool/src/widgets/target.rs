@@ -12,6 +12,8 @@ use windows::Win32::System::Memory::{
     VirtualAlloc, MEM_COMMIT, MEM_RESERVE, PAGE_EXECUTE_READWRITE,
 };
 
+use crate::er_params;
+
 #[derive(Debug, Default)]
 struct EnemyInfo {
     param_id: u32,
@@ -88,6 +90,7 @@ pub(crate) struct Target {
     player_position: ErPosition,
 
     distance_text: String,
+    damage_buf: String,
 }
 
 unsafe impl Send for Target {}
@@ -131,6 +134,7 @@ impl Target {
             player_position,
 
             distance_text: String::new(),
+            damage_buf: String::new(),
         }
     }
 
@@ -311,6 +315,53 @@ impl Widget for Target {
         };
 
         ui.text(format!("Param ID  {param_id}"));
+
+        #[inline]
+        fn conv(v: f32) -> i32 {
+            ((1.0 - v) * 100.0).round() as i32
+        }
+
+        match er_params::lookup(param_id) {
+            Some(rate) => {
+                self.damage_buf.clear();
+                write!(
+                    &mut self.damage_buf,
+                    "普 {:>4} 魔 {:>4}",
+                    conv(rate.neutral_damage_cut_rate),
+                    conv(rate.magic_damage_cut_rate)
+                )
+                .ok();
+                ui.text(&self.damage_buf);
+                self.damage_buf.clear();
+                write!(
+                    &mut self.damage_buf,
+                    "斩 {:>4} 火 {:>4}",
+                    conv(rate.slash_damage_cut_rate),
+                    conv(rate.fire_damage_cut_rate)
+                )
+                .ok();
+                ui.text(&self.damage_buf);
+                self.damage_buf.clear();
+                write!(
+                    &mut self.damage_buf,
+                    "打 {:>4} 雷 {:>4}",
+                    conv(rate.blow_damage_cut_rate),
+                    conv(rate.thunder_damage_cut_rate)
+                )
+                .ok();
+                ui.text(&self.damage_buf);
+                self.damage_buf.clear();
+                write!(
+                    &mut self.damage_buf,
+                    "刺 {:>4} 圣 {:>4}",
+                    conv(rate.thrust_damage_cut_rate),
+                    conv(rate.dark_damage_cut_rate)
+                )
+                .ok();
+                ui.text(&self.damage_buf);
+            },
+            None => ui.text("未找到敌人静态数据"),
+        }
 
         pbar("HP", hp, max_hp, COLOR_HP);
         pbar("SP", sp, max_sp, COLOR_SP);
