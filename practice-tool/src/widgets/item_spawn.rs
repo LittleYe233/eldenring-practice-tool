@@ -3,12 +3,12 @@ use std::collections::HashMap;
 use std::ffi::c_void;
 use std::fmt::Display;
 
+use csv::ReaderBuilder;
 use imgui::sys::{
     igGetCursorPosX, igGetCursorPosY, igGetTreeNodeToLabelSpacing, igGetWindowPos, igIndent,
     igSetNextWindowPos, igUnindent, ImVec2,
 };
 use imgui::{Condition, InputText, TreeNodeFlags, Ui, WindowFlags};
-use csv::ReaderBuilder;
 use libeldenring::prelude::*;
 use once_cell::sync::Lazy;
 use practice_tool_core::crossbeam_channel::Sender;
@@ -181,10 +181,7 @@ const ISP_TAG: &str = "##item-spawn";
 static ITEM_ID_TREE: Lazy<Vec<ItemIDNode>> = Lazy::new(|| {
     fn insert_leaf(tree: &mut Vec<ItemIDNode>, path: &[&str], name: &str, value: u32) {
         if path.is_empty() {
-            tree.push(ItemIDNode::Leaf {
-                node: name.to_string(),
-                value,
-            });
+            tree.push(ItemIDNode::Leaf { node: name.to_string(), value });
             return;
         }
         let segment = path[0].trim();
@@ -192,12 +189,11 @@ static ITEM_ID_TREE: Lazy<Vec<ItemIDNode>> = Lazy::new(|| {
             insert_leaf(tree, &path[1..], name, value);
             return;
         }
-        let index = tree.iter().position(|n| matches!(n, ItemIDNode::Node { node, .. } if node == segment))
+        let index = tree
+            .iter()
+            .position(|n| matches!(n, ItemIDNode::Node { node, .. } if node == segment))
             .unwrap_or_else(|| {
-                tree.push(ItemIDNode::Node {
-                    node: segment.to_string(),
-                    children: Vec::new(),
-                });
+                tree.push(ItemIDNode::Node { node: segment.to_string(), children: Vec::new() });
                 tree.len() - 1
             });
         if let ItemIDNode::Node { children, .. } = &mut tree[index] {
@@ -208,10 +204,8 @@ static ITEM_ID_TREE: Lazy<Vec<ItemIDNode>> = Lazy::new(|| {
     let mut tree: Vec<ItemIDNode> = serde_json::from_str(include_str!("item_ids.json")).unwrap();
     // Parses CSV content (CER)
     let csv_data = include_str!("itemdropdowncer.csv");
-    let mut reader = ReaderBuilder::new()
-        .delimiter(b'\t')
-        .has_headers(true)
-        .from_reader(csv_data.as_bytes());
+    let mut reader =
+        ReaderBuilder::new().delimiter(b'\t').has_headers(true).from_reader(csv_data.as_bytes());
     // Add to tree
     for record in reader.records().flatten() {
         let id_hex = record.get(0).unwrap_or("").trim();

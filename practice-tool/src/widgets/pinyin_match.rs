@@ -154,8 +154,7 @@ pub(crate) fn pinyin_match(query: &str, segment: &Segment) -> bool {
 
     for start in 0..segs.len() {
         let slice = &segs[start..];
-        if match_first_letter_at(&query_chars, slice) || match_full_pinyin_at(&query_lower, slice)
-        {
+        if match_first_letter_at(&query_chars, slice) || match_full_pinyin_at(&query_lower, slice) {
             return true;
         }
     }

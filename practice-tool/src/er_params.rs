@@ -43,7 +43,9 @@ fn load() -> Option<Vec<DamageCutRate>> {
 
     Some(
         bytes
-            .chunks_exact(ROW_SIZE)
+            .as_chunks::<ROW_SIZE>()
+            .0
+            .iter()
             .map(|c| DamageCutRate {
                 id: i32::from_le_bytes(c[0..4].try_into().unwrap()),
                 neutral_damage_cut_rate: f32::from_le_bytes(c[4..8].try_into().unwrap()),
