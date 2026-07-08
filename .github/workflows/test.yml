@@ -25,4 +25,3 @@ jobs:
         run: |
           cargo +nightly clippy -- -D warnings
           cargo +nightly fmt --all -- --check
-

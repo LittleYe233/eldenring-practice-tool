@@ -1,21 +1,31 @@
 name: Build
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - main
+  workflow_run:
+    workflows: ["Lints"]
+    types:
+      - completed
 
 jobs:
   build:
     runs-on: windows-latest
+    if: |
+      github.event_name == 'workflow_dispatch' || 
+      (
+        github.event_name == 'workflow_run' && 
+        github.event.workflow_run.conclusion == 'success' && 
+        github.event.workflow_run.event == 'push' && 
+        github.event.workflow_run.head_branch == 'main'
+      )
     steps:
       - uses: actions/checkout@master
         with:
+          ref: ${{ github.event.workflow_run.head_sha || github.sha }}
           submodules: recursive
 
       - name: Install Rust toolchain
         run: |
-          rustup toolchain install stable --target x86_64-pc-windows-msvc --profile minimal -c rustfmt,clippy
+          rustup toolchain install stable --target x86_64-pc-windows-msvc --profile minimal
 
       - name: Distribution build
         run: cargo xtask dist
@@ -25,23 +35,3 @@ jobs:
         with:
           name: jdsd_er_practice_tool
           path: target/dist/jdsd_er_practice_tool.zip
-
-      - name: Remove nightly release asset
-        uses: flcdrg/remove-release-asset-action@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          release_id: 70590819
-          asset_name: jdsd_er_practice_tool.zip
-
-      - name: Upload nightly release asset
-        uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: https://uploads.github.com/repos/veeenu/eldenring-practice-tool/releases/70590819/assets{?name,label}
-          asset_path: target/dist/jdsd_er_practice_tool.zip
-          asset_name: jdsd_er_practice_tool.zip
-          asset_content_type: application/zip
-          
-
