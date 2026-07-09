@@ -16,7 +16,10 @@ fn main() -> Result<()> {
     let task = env::args().nth(1);
     match task.as_deref() {
         Some("dist") => dist()?,
-        Some("codegen") => codegen::codegen()?,
+        Some("codegen") => {
+            let step = env::args().nth(2);
+            codegen::codegen(step.as_deref())?
+        },
         Some("inject") => inject(env::args().skip(1))?,
         Some("run") => run()?,
         Some("install") => install()?,
@@ -35,6 +38,7 @@ Tasks:
 run ............. compile and start the practice tool
 dist ............ build distribution artifacts
 codegen ......... generate Rust code: parameters, base addresses, ...
+                  optional step: aob_scans | params | item_ids
 inject <args> ... standalone dll inject
 install ......... install standalone dll to $ER_PATH
 uninstall ....... uninstall standalone dll from $ER_PATH
