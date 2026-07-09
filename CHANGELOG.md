@@ -1,5 +1,28 @@
 # Practice Tool Changelog
 
+## v1.9.6-alpha.2 (2026-07-10)
+
+**IMPORTANT:** This version adds many inelegant changes with hardcoded binary data files (`er-params.bin`) and much AI coding. Performance may be degraded.
+
+**IMPORTANT:** This version is an alpha version. Regard it a fast-changing early test and report issues if meeting any problem.
+
+### Added
+
+* Add param ID and some other static data of targeted enemy.
+  * All physical and attribute damange cut rate (in percentage; **positive values mean damage taken reduction** and vice versa).
+
+### Changed
+
+* **(BREAKING CHANGE)** Upgrade almost all dependencies. Much interface incompatibility is fixed by AI agents and maybe needs to be reverted in the future.
+  * Also see commit [`851ab09`](https://github.com/LittleYe233/practice-tool-core/commit/851ab09009c9a03e77d3b663056098888ac25b3a) in [practice-tool-core](https://github.com/LittleYe233/practice-tool-core).
+* `cargo xtask dist` now adds `CHANGELOG.md` and `er-params.bin` to compressed archive.
+* Translate almost all labels (including widgets in [practice-tool-core](https://github.com/LittleYe233/practice-tool-core)) into Simplified Chinese.
+
+### Fixed
+
+* **(BREAKING CHANGE)** Fix GitHub CI to run flawlessly in current repository.
+  * Still need some tweaks maybe.
+
 ## v1.9.5 (2026-05-31)
 
 This version syncs from @soarqin's patch (commit SHA 68f0710dc53931dd0b9809bfad5090781b00274b) to latest Elden Ring version 1.16.2.
