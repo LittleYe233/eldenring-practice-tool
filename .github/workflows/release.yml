@@ -1,61 +1,49 @@
 name: Release
 on:
-  workflow_run:
-    workflows: ["Build"]
-    types:
-      - completed
+  push:
+    tags:
+      - 'v*-zhCN-withCER'
 
 permissions:
   actions: read
   contents: write
 
 jobs:
-  build:
+  release:
     runs-on: windows-latest
-    # Condition 1: Only run if the upstream Build workflow finished successfully
-    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     steps:
       - uses: actions/checkout@master
         with:
-          ref: ${{ github.event.workflow_run.head_sha }}
-          fetch-depth: 0 # Fetches all tags and history
+          submodules: recursive
 
-      # Condition 2: Check if this specific commit has a tag bound to it
-      - name: Verify tag binding
+      - name: Parse tag name
         id: tag_check
         shell: pwsh
         run: |
-          $sha = "${{ github.event.workflow_run.head_sha }}"
-          Write-Host "Checking for tags bound to commit: $sha"
-          # Ensure local runner has all tags from GitHub
-          git fetch --tags
-          # Find if any tag starting with 'v' points exactly to this commit
-          $tag = git tag --points-at $sha | Where-Object { $_ -like "v*-zhCN-withCER" } | Select-Object -First 1
-          if (-not $tag) {
-            Write-Host "No valid release tag (v*) found for this commit. Skipping Release execution."
-            echo "RUN_RELEASE=false" >> $env:GITHUB_OUTPUT
-          } else {
-            Write-Host "Valid tag found: $tag. Proceeding with Release."
-            echo "RUN_RELEASE=true" >> $env:GITHUB_OUTPUT
-            echo "TAG_NAME=$tag" >> $env:GITHUB_OUTPUT
-            # Parse and clean the tag name
-            $cleanTag = $tag -replace "-zhCN-withCER$"
-            echo "CLEAN_TAG=$cleanTag" >> $env:GITHUB_OUTPUT
-          }
-      
-      - name: Download artifact from build workflow
-        if: steps.tag_check.outputs.RUN_RELEASE == 'true'
-        shell: pwsh
-        env:
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          $tag = "${{ github.ref_name }}"
+          $cleanTag = $tag -replace "-zhCN-withCER$"
+          echo "CLEAN_TAG=$cleanTag" >> $env:GITHUB_OUTPUT
+
+      - name: Install Rust toolchain
         run: |
-          gh run download "${{ github.event.workflow_run.id }}" --name "jdsd_er_practice_tool" --dir "target/dist"
+          rustup toolchain install stable --target x86_64-pc-windows-msvc --profile minimal
+
+      - name: Distribution build
+        run: cargo xtask dist
+      
+      - name: Rename artifact
+        id: artifact_rename
+        shell: pwsh
+        run: |
+          $newPath = "target/dist/jdsd_er_practice_tool_zhCN_withCER_${{ steps.tag_check.outputs.CLEAN_TAG }}.zip"
+          echo "NEW_PATH=$newPath" >> $env:GITHUB_OUTPUT
+          Rename-Item -Path "target/dist/jdsd_er_practice_tool_zhCN_withCER.zip" -NewName "$newPath"
       
       - name: Extract release body from changelog
-        if: steps.tag_check.outputs.RUN_RELEASE == 'true'
         shell: pwsh
         run: |
           $tag = "${{ steps.tag_check.outputs.CLEAN_TAG }}"
+          $result = "# Changelog`n`n"
           if (Test-Path $changelogFile) {
               $content = Get-Content -Raw -Path "CHANGELOG.md" -Encoding utf8
               $escapedTag = [regex]::Escape($tag)
@@ -63,21 +51,19 @@ jobs:
               $pattern = "(?ms)(?<=^##\s+$escapedTag(?:\s+.*)?(?:\r?\n|$))(.*?)(?=\r?\n##\s|\z)"
               $match = [regex]::Match($content, $pattern)
               if ($match.Success) {
-                  $result = $match.Value.Trim()
+                  $result = $result + $match.Value.Trim()
               } else {
-                  $result = "No changelog of this version found in [CHANGELOG.md](CHANGELOG.md)."
+                  $result = $result + "No changelog of this version found in [CHANGELOG.md](CHANGELOG.md)."
               }
           } else {
-              $result = "[CHANGELOG.md](CHANGELOG.md) file not found."
+              $result = $result + "[CHANGELOG.md](CHANGELOG.md) file not found."
           }
           Set-Content -Path "extracted_changelog.txt" -Value $result -Encoding utf8
       
       - name: Release
-        if: steps.tag_check.outputs.RUN_RELEASE == 'true'
-        uses: softprops/action-gh-release@v2
+        uses: softprops/action-gh-release@v3
         with:
           name: Elden Ring Practice Tool ${{ steps.tag_check.outputs.CLEAN_TAG }} (zh-CN, with CER support)
-          tag_name: ${{ steps.tag_check.outputs.TAG_NAME }}
           body_path: extracted_changelog.txt
           generate_release_notes: true
-          files: target/dist/jdsd_er_practice_tool.zip
+          files: ${{ steps.artifact_rename.outputs.NEW_PATH }}
