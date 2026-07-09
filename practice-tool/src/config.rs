@@ -348,9 +348,7 @@ impl TryFrom<String> for LevelFilterSerde {
 
 impl Config {
     pub(crate) fn parse(cfg: &str) -> Result<Self, String> {
-        let de = &mut toml::de::Deserializer::new(cfg);
-        serde_path_to_error::deserialize(de)
-            .map_err(|e| format!("TOML配置错误于{}: {}", e.path(), e.inner()))
+        toml::from_str(cfg).map_err(|e| format!("TOML配置错误于 {:?}: {}", e.span(), e.message()))
     }
 
     pub(crate) fn make_commands(self, chains: &Pointers) -> Vec<Box<dyn Widget>> {

@@ -4,18 +4,18 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
-anyhow = "1.0.80"
+anyhow = "1.0.103"
 dotenv = "0.15.0"
-heck = "0.4.0"
+heck = "0.5.0"
 pelite = "0.10.0"
-rayon = "1.5.3"
-regex = "1.5.5"
-serde = "1.0.197"
-serde_json = "1.0.73"
-serde_yaml = "0.9.32"
-textwrap = "0.15.0"
-widestring = "0.5.1"
-zip = "0.6"
+rayon = "1.12.0"
+regex = "1.13.0"
+serde = "1.0.228"
+serde_json = "1.0.150"
+serde_yaml = "0.9.34"
+textwrap = "0.16.2"
+widestring = "1.2.1"
+zip = "8.6.0"
 
 once_cell.workspace = true
 practice-tool-tasks.workspace = true

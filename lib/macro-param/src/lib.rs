@@ -1,7 +1,25 @@
 use heck::AsSnakeCase;
 use proc_macro::TokenStream;
 use quote::{format_ident, quote};
+use syn::parse::{Parse, ParseStream};
 use syn::*;
+
+/// Parsed arguments for the `#[bitflag(name, index)]` attribute.
+///
+/// Syntax: `bitflag(<ident>, <int>)` — e.g. `#[bitflag(vowType0, 0)]`.
+struct BitflagArgs {
+    name: Path,
+    fieldno: LitInt,
+}
+
+impl Parse for BitflagArgs {
+    fn parse(input: ParseStream) -> syn::Result<Self> {
+        let name: Path = input.parse()?;
+        let _: Token![,] = input.parse()?;
+        let fieldno: LitInt = input.parse()?;
+        Ok(BitflagArgs { name, fieldno })
+    }
+}
 
 #[proc_macro_derive(ParamStruct, attributes(bitflag))]
 pub fn macro_param(t: TokenStream) -> TokenStream {
@@ -21,36 +39,30 @@ pub fn macro_param(t: TokenStream) -> TokenStream {
                     .attrs
                     .iter()
                     .map(|attr| {
-                        let meta_list = match attr.parse_meta() {
-                            Ok(Meta::List(meta_list)) if meta_list.path.is_ident("bitflag") => {
+                        let meta_list = match &attr.meta {
+                            Meta::List(meta_list) if meta_list.path.is_ident("bitflag") => {
                                 meta_list
                             },
                             other => unimplemented!("Unimplemented attribute {:#?}", other),
                         };
 
-                        match (&meta_list.nested[0], &meta_list.nested[1]) {
-                            (
-                                NestedMeta::Meta(Meta::Path(path)),
-                                NestedMeta::Lit(Lit::Int(fieldno)),
-                            ) => {
-                                let bitfield_name = path.get_ident().unwrap().to_owned();
-                                let set_ident = format_ident!(
-                                    "set_{}",
-                                    AsSnakeCase(bitfield_name.to_string()).to_string()
-                                );
-                                let get_ident = format_ident!(
-                                    "{}",
-                                    AsSnakeCase(bitfield_name.to_string()).to_string()
-                                );
-                                (
-                                    bitfield_name,
-                                    fieldno.base10_parse::<u8>().unwrap(),
-                                    set_ident,
-                                    get_ident,
-                                )
-                            },
-                            other => panic!("Wrong attribute parameters: {other:#?}"),
-                        }
+                        let args: BitflagArgs = meta_list
+                            .parse_args()
+                            .unwrap_or_else(|e| panic!("Wrong attribute parameters: {e}"));
+
+                        let bitfield_name = args.name.get_ident().unwrap().to_owned();
+                        let set_ident = format_ident!(
+                            "set_{}",
+                            AsSnakeCase(bitfield_name.to_string()).to_string()
+                        );
+                        let get_ident =
+                            format_ident!("{}", AsSnakeCase(bitfield_name.to_string()).to_string());
+                        (
+                            bitfield_name,
+                            args.fieldno.base10_parse::<u8>().unwrap(),
+                            set_ident,
+                            get_ident,
+                        )
                     })
                     .collect::<Vec<_>>(),
             )

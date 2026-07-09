@@ -25,14 +25,14 @@ strip = "none"
 [workspace.dependencies]
 imgui = "0.12.0"
 imgui-sys = "0.12.0"
-once_cell = "1.19.0"
-parking_lot = "0.12.1"
-hudhook = { version = "0.9.0", features = ["dx12", "inject"], default-features = false }
-practice-tool-core = { git = "https://github.com/veeenu/practice-tool-core", version = "0.1.0" }
-practice-tool-tasks = { git = "https://github.com/veeenu/practice-tool-core", version = "0.1.0" }
+once_cell = "1.21.4"
+parking_lot = "0.12.5"
+hudhook = { version = "0.9.1", features = ["dx12", "inject"], default-features = false }
+practice-tool-core = { git = "https://github.com/LittleYe233/practice-tool-core", rev = "cb38f0f" }
+practice-tool-tasks = { git = "https://github.com/LittleYe233/practice-tool-core", rev = "cb38f0f" }
 
 [workspace.dependencies.windows]
-version = "0.62.0"
+version = "0.62.2"
 features = [
   "Win32_Foundation",
   "Win32_UI_Controls_Dialogs",
@@ -48,6 +48,6 @@ features = [
 [patch.'crates-io']
 # hudhook = { path = "../hudhook" }
 
-[patch.'https://github.com/veeenu/practice-tool-core']
-# practice-tool-core = { path = "../practice-tool-core" }
-# practice-tool-tasks = { path = "../practice-tool-core/tasks" }
+[patch.'https://github.com/LittleYe233/practice-tool-core']
+#practice-tool-core = { path = "../practice-tool-core" }
+#practice-tool-tasks = { path = "../practice-tool-core/tasks" }
