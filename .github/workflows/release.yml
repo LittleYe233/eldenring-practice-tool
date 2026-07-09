@@ -22,6 +22,8 @@ jobs:
         run: |
           $tag = "${{ github.ref_name }}"
           $cleanTag = $tag -replace "-zhCN-withCER$"
+          Write-Host "Current tag is $tag"
+          Write-Host "Cleaned tag is $cleanTag"
           echo "CLEAN_TAG=$cleanTag" >> $env:GITHUB_OUTPUT
 
       - name: Install Rust toolchain
@@ -35,16 +37,17 @@ jobs:
         id: artifact_rename
         shell: pwsh
         run: |
-          $newPath = "target/dist/jdsd_er_practice_tool_zhCN_withCER_${{ steps.tag_check.outputs.CLEAN_TAG }}.zip"
-          echo "NEW_PATH=$newPath" >> $env:GITHUB_OUTPUT
-          Rename-Item -Path "target/dist/jdsd_er_practice_tool_zhCN_withCER.zip" -NewName "$newPath"
+          $newName = "jdsd_er_practice_tool_zhCN_withCER_${{ steps.tag_check.outputs.CLEAN_TAG }}.zip"
+          Write-Host "New name is $newName"
+          echo "NEW_NAME=$newName" >> $env:GITHUB_OUTPUT
+          Rename-Item -Path "target\dist\jdsd_er_practice_tool_zhCN_withCER.zip" -NewName "$newName"
       
       - name: Extract release body from changelog
         shell: pwsh
         run: |
           $tag = "${{ steps.tag_check.outputs.CLEAN_TAG }}"
           $result = "# Changelog`n`n"
-          if (Test-Path $changelogFile) {
+          if (Test-Path "CHANGELOG.md") {
               $content = Get-Content -Raw -Path "CHANGELOG.md" -Encoding utf8
               $escapedTag = [regex]::Escape($tag)
               # Regex matches the target H2 header (and optional date) and captures everything up to the next H2 header or EOF
@@ -66,4 +69,4 @@ jobs:
           name: Elden Ring Practice Tool ${{ steps.tag_check.outputs.CLEAN_TAG }} (zh-CN, with CER support)
           body_path: extracted_changelog.txt
           generate_release_notes: true
-          files: ${{ steps.artifact_rename.outputs.NEW_PATH }}
+          files: "target/dist/${{ steps.artifact_rename.outputs.NEW_NAME }}"
