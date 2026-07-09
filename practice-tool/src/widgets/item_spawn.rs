@@ -3,7 +3,6 @@ use std::collections::HashMap;
 use std::ffi::c_void;
 use std::fmt::Display;
 
-use csv::ReaderBuilder;
 use imgui::sys::{
     igGetCursorPosX, igGetCursorPosY, igGetTreeNodeToLabelSpacing, igGetWindowPos, igIndent,
     igSetNextWindowPos, igUnindent, ImVec2,
@@ -178,51 +177,8 @@ impl ItemIDNode {
 }
 
 const ISP_TAG: &str = "##item-spawn";
-static ITEM_ID_TREE: Lazy<Vec<ItemIDNode>> = Lazy::new(|| {
-    fn insert_leaf(tree: &mut Vec<ItemIDNode>, path: &[&str], name: &str, value: u32) {
-        if path.is_empty() {
-            tree.push(ItemIDNode::Leaf { node: name.to_string(), value });
-            return;
-        }
-        let segment = path[0].trim();
-        if segment.is_empty() {
-            insert_leaf(tree, &path[1..], name, value);
-            return;
-        }
-        let index = tree
-            .iter()
-            .position(|n| matches!(n, ItemIDNode::Node { node, .. } if node == segment))
-            .unwrap_or_else(|| {
-                tree.push(ItemIDNode::Node { node: segment.to_string(), children: Vec::new() });
-                tree.len() - 1
-            });
-        if let ItemIDNode::Node { children, .. } = &mut tree[index] {
-            insert_leaf(children, &path[1..], name, value);
-        }
-    }
-    // First parse from JSON (vanilla game)
-    let mut tree: Vec<ItemIDNode> = serde_json::from_str(include_str!("item_ids.json")).unwrap();
-    // Parses CSV content (CER)
-    let csv_data = include_str!("itemdropdowncer.csv");
-    let mut reader =
-        ReaderBuilder::new().delimiter(b'\t').has_headers(true).from_reader(csv_data.as_bytes());
-    // Add to tree
-    for record in reader.records().flatten() {
-        let id_hex = record.get(0).unwrap_or("").trim();
-        let name_zh = record.get(2).unwrap_or("").trim();
-        let field = record.get(3).unwrap_or("").trim();
-        if id_hex.is_empty() || name_zh.is_empty() || field.is_empty() {
-            continue;
-        }
-        let value = match u32::from_str_radix(id_hex.trim_start_matches("0x"), 16) {
-            Ok(v) => v,
-            Err(_) => continue,
-        };
-        let path: Vec<&str> = field.split(',').collect();
-        insert_leaf(&mut tree, &path, name_zh, value);
-    }
-    tree
-});
+static ITEM_ID_TREE: Lazy<Vec<ItemIDNode>> =
+    Lazy::new(|| serde_json::from_str(include_str!("item_ids.json")).unwrap());
 static ITEM_PINYIN_INDEX: Lazy<HashMap<String, Segment>> = Lazy::new(|| {
     fn visit(node: &ItemIDNode, map: &mut HashMap<String, Segment>) {
         match node {
