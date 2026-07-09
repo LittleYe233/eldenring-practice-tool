@@ -22,7 +22,7 @@ use crate::widgets::position::save_position;
 use crate::widgets::quitout::quitout;
 use crate::widgets::runes::runes;
 use crate::widgets::savefile_manager::savefile_manager;
-use crate::widgets::target::Target;
+use crate::widgets::target::{target_static, Target};
 use crate::widgets::warp::Warp;
 
 #[cfg_attr(test, derive(Debug))]
@@ -215,6 +215,10 @@ enum CfgCommand {
         #[serde(rename = "target")]
         hotkey: PlaceholderOption<Key>,
     },
+    TargetStatic {
+        #[serde(rename = "target_static")]
+        hotkey: PlaceholderOption<Key>,
+    },
     Warp {
         #[serde(rename = "warp")]
         _warp: bool,
@@ -309,6 +313,7 @@ impl CfgCommand {
                 chains.chunk_position.clone(),
                 hotkey.into_option(),
             )),
+            CfgCommand::TargetStatic { hotkey } => target_static(hotkey.into_option()),
             CfgCommand::Quitout { hotkey } => quitout(chains.quitout.clone(), hotkey.into_option()),
             CfgCommand::Group { label, commands } => group(
                 label.as_str(),

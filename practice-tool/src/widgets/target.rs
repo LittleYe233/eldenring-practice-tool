@@ -1,18 +1,26 @@
 use std::f32::consts::PI;
 use std::fmt::Write;
+use std::sync::atomic::{AtomicBool, Ordering};
 
 use imgui::sys::{igGetCursorPosX, igGetCursorPosY, igGetWindowPos, ImVec2};
 use imgui::{ProgressBar, StyleColor};
 use libeldenring::memedit::PointerChain;
 use libeldenring::pointer_chain;
 use libeldenring::prelude::Position as ErPosition;
+use practice_tool_core::crossbeam_channel::Sender;
 use practice_tool_core::key::Key;
+use practice_tool_core::widgets::flag::{Flag, FlagWidget};
 use practice_tool_core::widgets::Widget;
 use windows::Win32::System::Memory::{
     VirtualAlloc, MEM_COMMIT, MEM_RESERVE, PAGE_EXECUTE_READWRITE,
 };
 
 use crate::er_params;
+
+/// Process-wide toggle for whether the "static data" (param ID + damage cut
+/// rates) overlay is shown by the target widget. Off by default; flipped by the
+/// `target_static` button and only effective while `target` itself is enabled.
+static TARGET_STATIC_ENABLED: AtomicBool = AtomicBool::new(false);
 
 #[derive(Debug, Default)]
 struct EnemyInfo {
@@ -81,6 +89,7 @@ struct EntityPointerChains {
 #[derive(Debug)]
 pub(crate) struct Target {
     label: String,
+    base_label: String,
     alloc_addr: PointerChain<[u8; 22]>,
     detour_addr: PointerChain<[u8; 11]>,
     detour_orig_data: [u8; 11],
@@ -91,6 +100,7 @@ pub(crate) struct Target {
 
     distance_text: String,
     damage_buf: String,
+    logs: Vec<String>,
 }
 
 unsafe impl Send for Target {}
@@ -121,10 +131,13 @@ impl Target {
             }
         };
 
+        let base_label = "目标单位信息".to_string();
+
         Target {
             label: hotkey
-                .map(|k| format!("目标单位信息 ({k})"))
-                .unwrap_or_else(|| "目标单位信息".to_string()),
+                .map(|k| format!("{base_label} ({k})"))
+                .unwrap_or_else(|| base_label.clone()),
+            base_label,
             alloc_addr,
             detour_addr,
             detour_orig_data: Default::default(),
@@ -135,6 +148,7 @@ impl Target {
 
             distance_text: String::new(),
             damage_buf: String::new(),
+            logs: Vec::new(),
         }
     }
 
@@ -199,6 +213,68 @@ impl Target {
         self.detour_addr.write(self.detour_orig_data);
         self.is_enabled = false;
     }
+
+    /// Buffers a "{base_label} activated/deactivated" notification, mirroring
+    /// `FlagWidget::log_state`. Drained into the on-screen log channel by
+    /// `Widget::log`.
+    fn log_state(&mut self, state: bool) {
+        let suffix = if state { "activated" } else { "deactivated" };
+        self.logs.push(format!("{} {suffix}", self.base_label));
+    }
+
+    /// Renders the "static data" of the locked enemy: its param ID plus the
+    /// per-damage-type cut rates. Gated at the call site on
+    /// `TARGET_STATIC_ENABLED`.
+    fn render_static_data(&mut self, ui: &imgui::Ui, param_id: u32) {
+        ui.text(format!("Param ID  {param_id}"));
+
+        #[inline]
+        fn conv(v: f32) -> i32 {
+            ((1.0 - v) * 100.0).round() as i32
+        }
+
+        match er_params::lookup(param_id) {
+            Some(rate) => {
+                self.damage_buf.clear();
+                write!(
+                    &mut self.damage_buf,
+                    "普 {:>4} 魔 {:>4}",
+                    conv(rate.neutral_damage_cut_rate),
+                    conv(rate.magic_damage_cut_rate)
+                )
+                .ok();
+                ui.text(&self.damage_buf);
+                self.damage_buf.clear();
+                write!(
+                    &mut self.damage_buf,
+                    "斩 {:>4} 火 {:>4}",
+                    conv(rate.slash_damage_cut_rate),
+                    conv(rate.fire_damage_cut_rate)
+                )
+                .ok();
+                ui.text(&self.damage_buf);
+                self.damage_buf.clear();
+                write!(
+                    &mut self.damage_buf,
+                    "打 {:>4} 雷 {:>4}",
+                    conv(rate.blow_damage_cut_rate),
+                    conv(rate.thunder_damage_cut_rate)
+                )
+                .ok();
+                ui.text(&self.damage_buf);
+                self.damage_buf.clear();
+                write!(
+                    &mut self.damage_buf,
+                    "刺 {:>4} 圣 {:>4}",
+                    conv(rate.thrust_damage_cut_rate),
+                    conv(rate.dark_damage_cut_rate)
+                )
+                .ok();
+                ui.text(&self.damage_buf);
+            },
+            None => ui.text("未找到敌人静态数据"),
+        }
+    }
 }
 
 #[inline]
@@ -233,6 +309,7 @@ impl Widget for Target {
             } else {
                 self.disable();
             }
+            self.log_state(state);
         }
     }
 
@@ -314,53 +391,8 @@ impl Widget for Target {
             ProgressBar::new(pct).size(pbar_size).overlay_text("").build(ui);
         };
 
-        ui.text(format!("Param ID  {param_id}"));
-
-        #[inline]
-        fn conv(v: f32) -> i32 {
-            ((1.0 - v) * 100.0).round() as i32
-        }
-
-        match er_params::lookup(param_id) {
-            Some(rate) => {
-                self.damage_buf.clear();
-                write!(
-                    &mut self.damage_buf,
-                    "普 {:>4} 魔 {:>4}",
-                    conv(rate.neutral_damage_cut_rate),
-                    conv(rate.magic_damage_cut_rate)
-                )
-                .ok();
-                ui.text(&self.damage_buf);
-                self.damage_buf.clear();
-                write!(
-                    &mut self.damage_buf,
-                    "斩 {:>4} 火 {:>4}",
-                    conv(rate.slash_damage_cut_rate),
-                    conv(rate.fire_damage_cut_rate)
-                )
-                .ok();
-                ui.text(&self.damage_buf);
-                self.damage_buf.clear();
-                write!(
-                    &mut self.damage_buf,
-                    "打 {:>4} 雷 {:>4}",
-                    conv(rate.blow_damage_cut_rate),
-                    conv(rate.thunder_damage_cut_rate)
-                )
-                .ok();
-                ui.text(&self.damage_buf);
-                self.damage_buf.clear();
-                write!(
-                    &mut self.damage_buf,
-                    "刺 {:>4} 圣 {:>4}",
-                    conv(rate.thrust_damage_cut_rate),
-                    conv(rate.dark_damage_cut_rate)
-                )
-                .ok();
-                ui.text(&self.damage_buf);
-            },
-            None => ui.text("未找到敌人静态数据"),
+        if TARGET_STATIC_ENABLED.load(Ordering::Relaxed) {
+            self.render_static_data(ui, param_id);
         }
 
         pbar("HP", hp, max_hp, COLOR_HP);
@@ -450,5 +482,33 @@ impl Widget for Target {
         } else {
             self.enable();
         }
+        self.log_state(self.is_enabled);
     }
+
+    fn log(&mut self, tx: Sender<String>) {
+        for log in self.logs.drain(..) {
+            tx.send(log).ok();
+        }
+    }
+}
+
+/// In-memory `Flag` backed by the `TARGET_STATIC_ENABLED` singleton, used so
+/// the "目标单位静态数据" button can be a standard `FlagWidget` checkbox.
+struct TargetStaticFlag;
+
+impl Flag for TargetStaticFlag {
+    fn set(&mut self, value: bool) {
+        TARGET_STATIC_ENABLED.store(value, Ordering::Relaxed);
+    }
+
+    fn get(&self) -> Option<bool> {
+        Some(TARGET_STATIC_ENABLED.load(Ordering::Relaxed))
+    }
+}
+
+/// Builds the "目标单位静态数据" toggle widget. Starts unchecked (the
+/// underlying flag defaults to off). `hotkey` is optional; users may bind one
+/// in the TOML.
+pub(crate) fn target_static(hotkey: Option<Key>) -> Box<dyn Widget> {
+    Box::new(FlagWidget::new("目标单位静态数据", TargetStaticFlag, hotkey))
 }

@@ -36,7 +36,9 @@ commands = [
   { flag = "one_shot", hotkey = "7" },
   { flag = "runearc", hotkey = "o" },
   { target = "ctrl+n" },
-  { flags = ["field_area_direction", "field_area_altimeter" , "field_area_compass"], label = "Field area HUD" },
+  { target_static = true },
+  # Maybe still broken?
+  { flags = ["field_area_direction", "field_area_altimeter" , "field_area_compass"], label = "场地HUD" },
   { flag = "no_update_ai", hotkey = "f1" },
   { flag = "no_trigger_event" },
   { flag = "gravity", hotkey = "f2" },
@@ -46,9 +48,6 @@ commands = [
   { flags = ["show_all_map_layers", "show_all_graces"], hotkey = "f3", label="显示所有赐福/地标" },
 
   { quitout = "p" },
-
-  # These flags are currently broken for some reason. TODO investigate.
-  # { flags = ["field_area_direction", "field_area_altimeter" , "field_area_compass"], hotkey = "9", label = "场地HUD" },
 ]
 
 radial-menu = [
