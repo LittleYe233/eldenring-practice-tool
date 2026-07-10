@@ -362,7 +362,7 @@ checksum = "48c757948c5ede0e46177b7add2e67155f70e33c07fea8284df6576da70b3719"
 
 [[package]]
 name = "eldenring-practice-tool"
-version = "1.9.6-alpha.2"
+version = "1.9.6-alpha.3"
 dependencies = [
  "anyhow",
  "const_format",
@@ -1318,7 +1318,7 @@ checksum = "94143f37725109f92c262ed2cf5e59bce7498c01bcc1502d7b9afe439a4e9f49"
 
 [[package]]
 name = "scripts"
-version = "1.9.6-alpha.2"
+version = "1.9.6-alpha.3"
 dependencies = [
  "hudhook",
 ]

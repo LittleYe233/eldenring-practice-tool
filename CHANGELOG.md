@@ -1,5 +1,18 @@
 # Practice Tool Changelog
 
+## v1.9.6-alpha.3 (2026-07-10)
+
+**IMPORTANT:** This version is an alpha version. Regard it a fast-changing early test and report issues if meeting any problem.
+
+### Added
+
+* Add CER item spawning support. Item IDs are collected from [ConvergenceER_CN](https://github.com/soarqin/ConvergenceER_CN) repository. See [codegen README](xtask/src/codegen/README.md) for more technical details.
+
+### Changed
+
+* Refactor data files to merge additional CSV to `xtask/src/codegen/item_ids.yml`. Remove that CSV file.
+* Allow `xtask` CLI to run only one step.
+
 ## v1.9.6-alpha.2 (2026-07-10)
 
 **IMPORTANT:** This version adds many inelegant changes with hardcoded binary data files (`er-params.bin`) and much AI coding. Performance may be degraded.
